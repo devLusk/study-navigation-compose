@@ -17,7 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondScreen(modifier: Modifier = Modifier) {
+fun SecondScreen(
+    navigateToFirstScreen: () -> Unit
+) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,9 +45,7 @@ fun SecondScreen(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {
-                    // TODO
-                }
+                onClick = { navigateToFirstScreen() }
             ) {
                 Text(text = "Go to First Screen")
             }
@@ -57,5 +57,5 @@ fun SecondScreen(modifier: Modifier = Modifier) {
 @Preview(showSystemUi = true)
 @Composable
 private fun SecondScreenPrev() {
-    SecondScreen()
+    SecondScreen({})
 }

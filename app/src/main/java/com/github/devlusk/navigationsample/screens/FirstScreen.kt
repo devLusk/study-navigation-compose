@@ -21,7 +21,9 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun FirstScreen(modifier: Modifier = Modifier) {
+fun FirstScreen(
+    navigateToSecondScreen: () -> Unit
+) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         val name = remember { mutableStateOf("") }
 
@@ -48,9 +50,7 @@ fun FirstScreen(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {
-                    // TODO
-                }
+                onClick = { navigateToSecondScreen() }
             ) {
                 Text("Go to Second Screen")
             }
@@ -61,5 +61,5 @@ fun FirstScreen(modifier: Modifier = Modifier) {
 @Preview(showSystemUi = true)
 @Composable
 private fun FirstScreenPrev() {
-    FirstScreen()
+    FirstScreen({})
 }
