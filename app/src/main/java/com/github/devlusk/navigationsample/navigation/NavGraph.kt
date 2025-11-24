@@ -16,13 +16,14 @@ fun NavGraph(
         startDestination = Routes.FIRST_SCREEN
     ) {
         composable(Routes.FIRST_SCREEN) {
-            FirstScreen {
-                navController.navigate(Routes.SECOND_SCREEN)
+            FirstScreen { userName ->
+                navController.navigate(Routes.secondScreenWithArg(userName))
             }
         }
 
-        composable(Routes.SECOND_SCREEN) {
-            SecondScreen {
+        composable("${Routes.SECOND_SCREEN}/{userName}") { backStackEntry ->
+            val userName = backStackEntry.arguments?.getString("userName") ?: ""
+            SecondScreen(userName) {
                 navController.navigate(Routes.FIRST_SCREEN)
             }
         }

@@ -22,10 +22,10 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun FirstScreen(
-    navigateToSecondScreen: () -> Unit
+    navigateToSecondScreen: (String) -> Unit
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        val name = remember { mutableStateOf("") }
+        val userName = remember { mutableStateOf("") }
 
         Column(
             verticalArrangement = Arrangement.Center,
@@ -43,14 +43,14 @@ fun FirstScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedTextField(
-                value = name.value,
-                onValueChange = { name.value = it }
+                value = userName.value,
+                onValueChange = { userName.value = it }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { navigateToSecondScreen() }
+                onClick = { navigateToSecondScreen(userName.value) }
             ) {
                 Text("Go to Second Screen")
             }

@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SecondScreen(
+    userName: String,
     navigateToFirstScreen: () -> Unit
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -38,7 +39,7 @@ fun SecondScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "Welcome",
+                text = "Welcome $userName",
                 fontSize = 22.sp
             )
 
@@ -57,5 +58,5 @@ fun SecondScreen(
 @Preview(showSystemUi = true)
 @Composable
 private fun SecondScreenPrev() {
-    SecondScreen({})
+    SecondScreen("Lucas", {})
 }
